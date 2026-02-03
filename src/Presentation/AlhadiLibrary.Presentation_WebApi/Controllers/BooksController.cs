@@ -1,5 +1,8 @@
-﻿using AlhadiLibrary.Domain.AppService.Books.Commands;
-using AlhadiLibrary.Domain.AppService.Books.Queries;
+﻿using AlhadiLibrary.Domain.AppService.Books.Commands.Create;
+using AlhadiLibrary.Domain.AppService.Books.Commands.Delete;
+using AlhadiLibrary.Domain.AppService.Books.Commands.Update;
+using AlhadiLibrary.Domain.AppService.Books.Queries.GetAll;
+using AlhadiLibrary.Domain.AppService.Books.Queries.GetById;
 using AlhadiLibrary.Domain.Core.BookAgg.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

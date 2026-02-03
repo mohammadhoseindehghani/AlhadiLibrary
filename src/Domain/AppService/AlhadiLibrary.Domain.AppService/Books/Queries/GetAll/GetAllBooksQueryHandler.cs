@@ -1,10 +1,9 @@
-﻿using AlhadiLibrary.Domain.AppService.Books.Queries;
-using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Data;
+﻿using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Data;
 using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Service;
 using AlhadiLibrary.Domain.Core.BookAgg.DTOs;
 using MediatR;
 
-namespace AlhadiLibrary.Domain.AppService.Books.Handlers;
+namespace AlhadiLibrary.Domain.AppService.Books.Queries.GetAll;
 
 public class GetAllBooksQueryHandler(IBookService bookService) : IRequestHandler<GetAllBooksQuery, List<BookDto>>
 {

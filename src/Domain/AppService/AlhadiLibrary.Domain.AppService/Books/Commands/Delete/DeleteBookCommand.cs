@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace AlhadiLibrary.Domain.AppService.Books.Commands;
+namespace AlhadiLibrary.Domain.AppService.Books.Commands.Delete;
 
 public class DeleteBookCommand : IRequest<Unit>
 {

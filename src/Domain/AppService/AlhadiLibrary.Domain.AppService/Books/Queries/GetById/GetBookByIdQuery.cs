@@ -1,7 +1,7 @@
 ﻿using AlhadiLibrary.Domain.Core.BookAgg.DTOs;
 using MediatR;
 
-namespace AlhadiLibrary.Domain.AppService.Books.Queries;
+namespace AlhadiLibrary.Domain.AppService.Books.Queries.GetById;
 
 public class GetBookByIdQuery : IRequest<BookDto>
 {

@@ -1,7 +1,7 @@
 ﻿using AlhadiLibrary.Domain.Core.BookAgg.DTOs;
 using MediatR;
 
-namespace AlhadiLibrary.Domain.AppService.Books.Commands;
+namespace AlhadiLibrary.Domain.AppService.Books.Commands.Update;
 
 public class UpdateBookCommand : IRequest<Unit>
 {

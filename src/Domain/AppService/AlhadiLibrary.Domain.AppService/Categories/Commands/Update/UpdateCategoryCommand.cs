@@ -1,7 +1,7 @@
 ﻿using AlhadiLibrary.Domain.Core.CategoryAgg.DTOs;
 using MediatR;
 
-namespace AlhadiLibrary.Domain.AppService.Categories.Commands;
+namespace AlhadiLibrary.Domain.AppService.Categories.Commands.Update;
 
 public class UpdateCategoryCommand : IRequest<Unit>
 {

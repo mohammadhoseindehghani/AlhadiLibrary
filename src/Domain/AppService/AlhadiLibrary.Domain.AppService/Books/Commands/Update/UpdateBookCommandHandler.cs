@@ -1,9 +1,8 @@
-﻿using AlhadiLibrary.Domain.AppService.Books.Commands;
-using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Data;
+﻿using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Data;
 using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Service;
 using MediatR;
 
-namespace AlhadiLibrary.Domain.AppService.Books.Handlers;
+namespace AlhadiLibrary.Domain.AppService.Books.Commands.Update;
 
 public class UpdateBookCommandHandler(IBookService bookService) : IRequestHandler<UpdateBookCommand, Unit>
 {

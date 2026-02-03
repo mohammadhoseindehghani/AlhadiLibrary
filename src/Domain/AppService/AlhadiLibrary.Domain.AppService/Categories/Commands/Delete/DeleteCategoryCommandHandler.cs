@@ -1,8 +1,7 @@
-﻿using AlhadiLibrary.Domain.AppService.Categories.Commands;
-using AlhadiLibrary.Domain.Core.CategoryAgg.Contracts.Service;
+﻿using AlhadiLibrary.Domain.Core.CategoryAgg.Contracts.Service;
 using MediatR;
 
-namespace AlhadiLibrary.Domain.AppService.Categories.Handlers;
+namespace AlhadiLibrary.Domain.AppService.Categories.Commands.Delete;
 
 public class DeleteCategoryCommandHandler(ICategoryService categoryService) : IRequestHandler<DeleteCategoryCommand, Unit>
 {

@@ -1,13 +1,12 @@
 ﻿using AlhadiLibrary.Domain.AppService.Books.Queries;
-using AlhadiLibrary.Domain.AppService.Categories.Queries;
 using AlhadiLibrary.Domain.Core.CategoryAgg.Contracts.Data;
 using AlhadiLibrary.Domain.Core.CategoryAgg.Contracts.Service;
 using AlhadiLibrary.Domain.Core.CategoryAgg.DTOs;
 using MediatR;
 
-namespace AlhadiLibrary.Domain.AppService.Categories.Handlers;
+namespace AlhadiLibrary.Domain.AppService.Categories.Queries.GetById;
 
-public class GetByIdQueryHandler(ICategoryService categoryService) : IRequestHandler<GetCategoryByIdQuery, CategoryDto>
+public class GetCategoryByIdQueryHandler(ICategoryService categoryService) : IRequestHandler<GetCategoryByIdQuery, CategoryDto>
 {
 
     public async Task<CategoryDto> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
