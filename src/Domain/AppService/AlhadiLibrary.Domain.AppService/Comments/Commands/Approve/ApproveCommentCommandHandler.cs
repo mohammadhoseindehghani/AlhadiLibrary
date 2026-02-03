@@ -8,5 +8,6 @@ public class ApproveCommentCommandHandler(ICommentService commentService) : IReq
     public async Task<Unit> Handle(ApproveCommentCommand request, CancellationToken cancellationToken)
     {
         await commentService.ApproveAsync(request.CommentId, cancellationToken);
+        return Unit.Value;
     }
 }

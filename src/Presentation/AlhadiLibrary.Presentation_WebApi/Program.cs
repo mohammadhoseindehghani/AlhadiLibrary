@@ -2,6 +2,7 @@ using AlhadiLibrary.DataAccess.Repo.EfCore;
 using AlhadiLibrary.DataAccess.Repo.EfCore.Mapping;
 using AlhadiLibrary.Db.SqlServer.EfCore.DbContext;
 using AlhadiLibrary.Db.SqlServer.EfCore.Identity.Service;
+using AlhadiLibrary.Domain.AppService.Comments.Commands.Create;
 using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Data;
 using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Service;
 using AlhadiLibrary.Domain.Core.CategoryAgg.Contracts.Data;
@@ -17,6 +18,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using System.Text;
+using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -72,6 +75,10 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Enter JWT token like: Bearer {token}"
     });
 });
+
+builder.Services.AddValidatorsFromAssembly(
+    typeof(CreateCommentCommandValidator).Assembly);
+
 
 builder.Services.AddAutoMapper(typeof(BookProfile));
 
