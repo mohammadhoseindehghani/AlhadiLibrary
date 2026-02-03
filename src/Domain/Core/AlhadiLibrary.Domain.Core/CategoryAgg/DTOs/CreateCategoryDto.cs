@@ -1,4 +1,6 @@
-﻿namespace AlhadiLibrary.Domain.Core.CategoryAgg.DTOs;
+﻿using MediatR;
+
+namespace AlhadiLibrary.Domain.Core.CategoryAgg.DTOs;
 
 public class CreateCategoryDto
 {

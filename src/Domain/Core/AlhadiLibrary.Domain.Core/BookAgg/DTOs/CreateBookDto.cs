@@ -1,4 +1,6 @@
-﻿namespace AlhadiLibrary.Domain.Core.BookAgg.DTOs;
+﻿using MediatR;
+
+namespace AlhadiLibrary.Domain.Core.BookAgg.DTOs;
 
 public class CreateBookDto
 {

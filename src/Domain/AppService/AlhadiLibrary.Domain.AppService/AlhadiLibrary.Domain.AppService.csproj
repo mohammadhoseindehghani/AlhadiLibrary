@@ -6,4 +6,21 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Categories\Commands\" />
+    <Folder Include="Categories\Handlers\" />
+    <Folder Include="Categories\Queries\" />
+    <Folder Include="Comments\Commands\" />
+    <Folder Include="Comments\Handlers\" />
+    <Folder Include="Comments\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="14.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\AlhadiLibrary.Domain.Core\AlhadiLibrary.Domain.Core.csproj" />
+  </ItemGroup>
+
 </Project>

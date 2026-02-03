@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Domain\AppService\AlhadiLibrary.Domain.AppService\AlhadiLibrary.Domain.AppService.csproj" />
     <ProjectReference Include="..\..\Domain\Core\AlhadiLibrary.Domain.Core\AlhadiLibrary.Domain.Core.csproj" />
     <ProjectReference Include="..\..\Domain\Service\AlhadiLibrary.Domain.Service\AlhadiLibrary.Domain.Service.csproj" />
     <ProjectReference Include="..\..\Infrastrucure\DataAccess\AlhadiLibrary.DataAccess.Repo.EfCore\AlhadiLibrary.DataAccess.Repo.EfCore.csproj" />
