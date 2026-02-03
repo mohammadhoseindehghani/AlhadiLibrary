@@ -6,4 +6,26 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="BookAgg\Contracts\AppService\" />
+    <Folder Include="BookAgg\Contracts\Data\" />
+    <Folder Include="BookAgg\Contracts\Service\" />
+    <Folder Include="BookAgg\DTOs\" />
+    <Folder Include="BookAgg\Enums\" />
+    <Folder Include="CategoryAgg\Contracts\AppService\" />
+    <Folder Include="CategoryAgg\Contracts\Data\" />
+    <Folder Include="CategoryAgg\Contracts\Service\" />
+    <Folder Include="CategoryAgg\DTOs\" />
+    <Folder Include="CategoryAgg\Entities\" />
+    <Folder Include="CategoryAgg\Enums\" />
+    <Folder Include="CommentAgg\Contracts\AppService\" />
+    <Folder Include="CommentAgg\Contracts\Data\" />
+    <Folder Include="CommentAgg\Contracts\Service\" />
+    <Folder Include="CommentAgg\DTOs\" />
+    <Folder Include="UserAgg\Contracts\AppService\" />
+    <Folder Include="UserAgg\Contracts\Data\" />
+    <Folder Include="UserAgg\DTOs\" />
+    <Folder Include="UserAgg\Enums\" />
+  </ItemGroup>
+
 </Project>
