@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\AlhadiLibrary.Domain.Core\AlhadiLibrary.Domain.Core.csproj" />
+  </ItemGroup>
+
 </Project>

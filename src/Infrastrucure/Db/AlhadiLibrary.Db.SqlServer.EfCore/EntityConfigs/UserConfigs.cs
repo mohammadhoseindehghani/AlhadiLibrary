@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AlhadiLibrary.Db.SqlServer.EfCore.EntityConfigs;
 
-public class UserConfigs : IEntityTypeConfiguration<User>
+public class UserConfigs : IEntityTypeConfiguration<ApplicationUser>
 {
-    public void Configure(EntityTypeBuilder<User> builder)
+    public void Configure(EntityTypeBuilder<ApplicationUser> builder)
     {
         builder.ToTable("Users");
 
@@ -49,7 +49,7 @@ public class UserConfigs : IEntityTypeConfiguration<User>
             .IsRequired();
 
         builder.HasMany(x => x.Comments)
-            .WithOne(x => x.User)
+            .WithOne(x => x.ApplicationUser)
             .HasForeignKey(x => x.UserId)
             .OnDelete(DeleteBehavior.Restrict);
 

@@ -10,5 +10,5 @@ public class BookTranslator : BaseEntity
     public Book Book { get; set; }
 
     public int TranslatorId { get; set; }
-    public User Translator { get; set; }
+    public ApplicationUser Translator { get; set; }
 }

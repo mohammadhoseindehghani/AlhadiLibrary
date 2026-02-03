@@ -7,7 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
+    <PackageReference Include="MediatR" Version="14.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.OpenApi" Version="3.3.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Core\AlhadiLibrary.Domain.Core\AlhadiLibrary.Domain.Core.csproj" />
+    <ProjectReference Include="..\..\Domain\Service\AlhadiLibrary.Domain.Service\AlhadiLibrary.Domain.Service.csproj" />
+    <ProjectReference Include="..\..\Infrastrucure\DataAccess\AlhadiLibrary.DataAccess.Repo.EfCore\AlhadiLibrary.DataAccess.Repo.EfCore.csproj" />
+    <ProjectReference Include="..\..\Infrastrucure\Db\AlhadiLibrary.Db.SqlServer.EfCore\AlhadiLibrary.Db.SqlServer.EfCore.csproj" />
   </ItemGroup>
 
 </Project>

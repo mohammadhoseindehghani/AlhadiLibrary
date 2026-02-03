@@ -16,5 +16,5 @@ public class Comment : BaseEntity
     public Book Book { get;  set; }
 
     public int UserId { get;  set; }
-    public User User { get;  set; }
+    public ApplicationUser ApplicationUser { get;  set; }
 }

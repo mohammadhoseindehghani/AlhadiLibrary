@@ -1,16 +1,17 @@
-﻿using System.Runtime;
-using AlhadiLibrary.Domain.Core.BookAgg.Entities;
+﻿using AlhadiLibrary.Domain.Core.BookAgg.Entities;
 using AlhadiLibrary.Domain.Core.CategoryAgg.Entities;
 using AlhadiLibrary.Domain.Core.CommentAgg.Entities;
 using AlhadiLibrary.Domain.Core.UserAgg.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AlhadiLibrary.Db.SqlServer.EfCore.DbContext;
 
-public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext(options)
+public class AppDbContext(DbContextOptions<AppDbContext> options)
+    : IdentityDbContext<ApplicationUser, IdentityRole<int>, int>(options)
 {
-    public DbSet<User> Users { get; set; }
+    public DbSet<ApplicationUser> DomainUsers { get; set; }
     public DbSet<BookTranslator> BookTranslators { get; set; }
     public DbSet<BookAuthor> BookAuthors { get; set; }
     public DbSet<Book> Books { get; set; }

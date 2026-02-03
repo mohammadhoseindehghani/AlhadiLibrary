@@ -10,7 +10,7 @@ public class BookAuthor : BaseEntity
     public Book Book { get; set; }
 
     public int AuthorId { get; set; }
-    public User Author { get; set; }
+    public ApplicationUser Author { get; set; }
 }
 
 
