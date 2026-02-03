@@ -1,0 +1,24 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Domain/" />
+  <Folder Name="/src/Domain/AppService/">
+    <Project Path="src/Domain/AppService/AlhadiLibrary.Domain.AppService/AlhadiLibrary.Domain.AppService.csproj" Id="37104e6f-10a5-46f5-af3b-dc0c2735f34a" />
+  </Folder>
+  <Folder Name="/src/Domain/Core/">
+    <Project Path="src/Domain/Core/AlhadiLibrary.Domain.Core/AlhadiLibrary.Domain.Core.csproj" Id="c29f8bc8-e5c4-41ad-916d-785aecb91018" />
+  </Folder>
+  <Folder Name="/src/Domain/Service/">
+    <Project Path="src/Domain/Service/AlhadiLibrary.Domain.Service/AlhadiLibrary.Domain.Service.csproj" Id="28f94976-6b32-46fd-991d-fcc4df73155e" />
+  </Folder>
+  <Folder Name="/src/Infrastucture/" />
+  <Folder Name="/src/Infrastucture/DataAccess/">
+    <Project Path="src/Infrastrucure/DataAccess/AlhadiLibrary.DataAccess.Repo.EfCore/AlhadiLibrary.DataAccess.Repo.EfCore.csproj" Id="db630c2e-d831-4eae-ad36-01da8a47c0af" />
+  </Folder>
+  <Folder Name="/src/Infrastucture/Db/">
+    <Project Path="src/Infrastrucure/Db/AlhadiLibrary.Db.SqlServer.EfCore/AlhadiLibrary.Db.SqlServer.EfCore.csproj" Id="d580f0c5-5171-41a7-9e67-22fb7fd8bfdd" />
+  </Folder>
+  <Folder Name="/src/Presemtation/">
+    <Project Path="src/Presentation/AlhadiLibrary.Presentation_WebApi/AlhadiLibrary.Presentation_WebApi.csproj" />
+  </Folder>
+  <Folder Name="/test/" />
+</Solution>
