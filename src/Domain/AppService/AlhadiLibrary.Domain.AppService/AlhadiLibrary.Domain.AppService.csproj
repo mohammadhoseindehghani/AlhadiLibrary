@@ -7,9 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Categories\Commands\" />
-    <Folder Include="Categories\Handlers\" />
-    <Folder Include="Categories\Queries\" />
     <Folder Include="Comments\Commands\" />
     <Folder Include="Comments\Handlers\" />
     <Folder Include="Comments\Queries\" />
