@@ -1,7 +1,7 @@
 using AlhadiLibrary.DataAccess.Repo.EfCore;
-using AlhadiLibrary.DataAccess.Repo.EfCore.Mapping;
 using AlhadiLibrary.Db.SqlServer.EfCore.DbContext;
 using AlhadiLibrary.Db.SqlServer.EfCore.Identity.Service;
+using AlhadiLibrary.Domain.AppService._common;
 using AlhadiLibrary.Domain.AppService.Comments.Commands.Create;
 using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Data;
 using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Service;
@@ -12,14 +12,14 @@ using AlhadiLibrary.Domain.Core.CommentAgg.Contracts.Service;
 using AlhadiLibrary.Domain.Core.UserAgg.Contracts.Service;
 using AlhadiLibrary.Domain.Core.UserAgg.Entities;
 using AlhadiLibrary.Domain.Service;
+using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi;
 using System.Text;
-using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,11 +60,35 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssembly(
+        typeof(CreateCommentCommand).Assembly);
+});
+
+builder.Services.AddTransient(
+    typeof(IPipelineBehavior<,>),
+    typeof(ValidationBehavior<,>)
+);
+
 builder.Services.AddAuthorization();
 
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(c =>
 {
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Alhadi Library API",
+        Version = "v1",
+        Description = "CQRS + MediatR + JWT Authentication",
+        Contact = new OpenApiContact
+        {
+            Name = "Alhadi Team",
+            Email = "support@alhadi.ir"
+        }
+    });
+
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -72,7 +96,25 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Enter JWT token like: Bearer {token}"
+        Description =
+            "JWT Authorization header.\r\n\r\n" +
+            "Enter your token like this:\r\n" +
+            "**Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...**"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
     });
 });
 
@@ -80,7 +122,9 @@ builder.Services.AddValidatorsFromAssembly(
     typeof(CreateCommentCommandValidator).Assembly);
 
 
-builder.Services.AddAutoMapper(typeof(BookProfile));
+builder.Services.AddAutoMapper(
+    AppDomain.CurrentDomain.GetAssemblies());
+
 
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
