@@ -1,4 +1,5 @@
 using AlhadiLibrary.DataAccess.Repo.EfCore;
+using AlhadiLibrary.DataAccess.Repo.EfCore.Mapping;
 using AlhadiLibrary.Db.SqlServer.EfCore.DbContext;
 using AlhadiLibrary.Db.SqlServer.EfCore.Identity.Service;
 using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Data;
@@ -8,6 +9,7 @@ using AlhadiLibrary.Domain.Core.CategoryAgg.Contracts.Service;
 using AlhadiLibrary.Domain.Core.CommentAgg.Contracts.Data;
 using AlhadiLibrary.Domain.Core.CommentAgg.Contracts.Service;
 using AlhadiLibrary.Domain.Core.UserAgg.Contracts.Service;
+using AlhadiLibrary.Domain.Core.UserAgg.Entities;
 using AlhadiLibrary.Domain.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -15,7 +17,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using System.Text;
-using AlhadiLibrary.Domain.Core.UserAgg.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -72,10 +73,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Services.AddAutoMapper(cfg =>
-{
-    cfg.AddMaps(typeof(BookProfile).Assembly);
-});
+builder.Services.AddAutoMapper(typeof(BookProfile));
 
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
