@@ -4,6 +4,6 @@ namespace AlhadiLibrary.Domain.Core.UserAgg.Contracts.Service;
 
 public interface IIdentityService
 {
-    Task<AuthResultDto> RegisterAsync(RegisterDto dto,CancellationToken ct);
-    Task<AuthResultDto> LoginAsync(LoginDto dto);
+    Task<AuthResultDto> RegisterAsync(RegisterDto dto, CancellationToken ct);
+    Task<AuthResultDto> LoginAsync(LoginDto dto, CancellationToken ct);
 }

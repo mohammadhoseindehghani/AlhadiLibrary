@@ -34,13 +34,13 @@ public class IdentityService(
             if (!identityResult.Succeeded)
                 throw new Exception(identityResult.Errors.First().Description);
 
-            var user = new ApplicationUser()
+            var user = new ApplicationUser
             {
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 Email = dto.Email,
                 MobileNumber = dto.MobileNumber,
-                IdentityUserId = identityUser.Id, 
+                IdentityUserId = identityUser.Id,
                 Role = UserRoleEnum.Customer
             };
 
@@ -51,11 +51,12 @@ public class IdentityService(
 
             var token = jwtTokenGenerator.GenerateToken(user);
 
-            return new AuthResultDto(
-                user.Id,
-                token,
-                DateTime.UtcNow.AddHours(2)
-            );
+            return new AuthResultDto
+            {
+                UserId = user.Id,
+                Token = token,
+                ExpireAt = DateTime.UtcNow.AddHours(2)
+            };
         }
         catch
         {
@@ -68,8 +69,7 @@ public class IdentityService(
         }
     }
 
-
-    public async Task<AuthResultDto> LoginAsync(LoginDto dto)
+    public async Task<AuthResultDto> LoginAsync(LoginDto dto, CancellationToken ct)
     {
         var identityUser = await userManager.FindByEmailAsync(dto.Email);
         if (identityUser == null)
@@ -83,14 +83,15 @@ public class IdentityService(
 
         var user = await context.Users
             .AsNoTracking()
-            .FirstAsync(x => x.IdentityUserId == identityUser.Id);
+            .FirstAsync(x => x.IdentityUserId == identityUser.Id, ct);
 
         var token = jwtTokenGenerator.GenerateToken(user);
 
-        return new AuthResultDto(
-            user.Id,
-            token,
-            DateTime.UtcNow.AddHours(2)
-        );
+        return new AuthResultDto
+        {
+            UserId = user.Id,
+            Token = token,
+            ExpireAt = DateTime.UtcNow.AddHours(2)
+        };
     }
 }

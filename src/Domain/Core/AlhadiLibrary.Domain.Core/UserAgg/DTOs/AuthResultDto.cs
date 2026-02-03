@@ -1,7 +1,8 @@
 ﻿namespace AlhadiLibrary.Domain.Core.UserAgg.DTOs;
 
-public record AuthResultDto(
-    int UserId,
-    string Token,
-    DateTime ExpireAt
-);
+public class AuthResultDto
+{
+    public int UserId { get; set; }
+    public string Token { get; set; } 
+    public DateTime ExpireAt { get; set; }
+}

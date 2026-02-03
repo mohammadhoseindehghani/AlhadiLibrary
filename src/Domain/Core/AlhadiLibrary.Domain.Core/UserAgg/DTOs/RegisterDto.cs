@@ -1,9 +1,10 @@
 ﻿namespace AlhadiLibrary.Domain.Core.UserAgg.DTOs;
 
-public record RegisterDto(
-    string FirstName,
-    string LastName,
-    string Email,
-    string Password,
-    string MobileNumber
-);
+public class RegisterDto
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; } 
+    public string Email { get; set; } 
+    public string Password { get; set; } 
+    public string MobileNumber { get; set; } 
+}
