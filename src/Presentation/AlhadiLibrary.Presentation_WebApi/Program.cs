@@ -1,4 +1,5 @@
 using AlhadiLibrary.DataAccess.Repo.EfCore;
+using AlhadiLibrary.DataAccess.Repo.EfCore.Mapping;
 using AlhadiLibrary.Db.SqlServer.EfCore.DbContext;
 using AlhadiLibrary.Db.SqlServer.EfCore.Identity.Service;
 using AlhadiLibrary.Domain.AppService._common;
@@ -123,8 +124,9 @@ builder.Services.AddValidatorsFromAssembly(
     typeof(CreateCommentCommandValidator).Assembly);
 
 
-builder.Services.AddAutoMapper(
-    AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(typeof(BookProfile).Assembly);
+
+
 
 
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();

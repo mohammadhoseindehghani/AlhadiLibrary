@@ -1,10 +1,11 @@
 ﻿using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Data;
+using AlhadiLibrary.Domain.Core.BookAgg.Contracts.Service;
 using AlhadiLibrary.Domain.Core.BookAgg.DTOs;
 using MediatR;
 
 namespace AlhadiLibrary.Domain.AppService.Books.Queries.Search;
 
-public class SearchBooksQueryHandler(IBookRepository bookRepository) : IRequestHandler<SearchBooksQuery, List<BookDto>>
+public class SearchBooksQueryHandler(IBookService bookService) : IRequestHandler<SearchBooksQuery, List<BookDto>>
 {
     public async Task<List<BookDto>> Handle(SearchBooksQuery request, CancellationToken ct)
     {
@@ -12,7 +13,7 @@ public class SearchBooksQueryHandler(IBookRepository bookRepository) : IRequestH
         NormalizeAuthorNames(request.Filter);
         NormalizeTranslatorNames(request.Filter);
 
-        return await bookRepository.SearchAsync(
+        return await bookService.SearchAsync(
             request.Filter, ct);
     }
 
