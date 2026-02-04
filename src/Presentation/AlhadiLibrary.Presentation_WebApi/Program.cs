@@ -12,14 +12,15 @@ using AlhadiLibrary.Domain.Core.CommentAgg.Contracts.Service;
 using AlhadiLibrary.Domain.Core.UserAgg.Contracts.Service;
 using AlhadiLibrary.Domain.Core.UserAgg.Entities;
 using AlhadiLibrary.Domain.Service;
+using AlhadiLibrary.Presentation_WebApi.CustomMiddleware;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.OpenApi.Models;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -138,6 +139,8 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
 var app = builder.Build();
+app.UseMiddleware<RequestLoggingMiddleware>();
+
 
 if (app.Environment.IsDevelopment())
 {
