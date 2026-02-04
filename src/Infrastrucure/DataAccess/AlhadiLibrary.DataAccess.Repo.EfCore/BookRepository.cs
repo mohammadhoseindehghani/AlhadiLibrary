@@ -66,4 +66,83 @@ public class BookRepository(AppDbContext context, IMapper mapper) : IBookReposit
             .ProjectTo<BookDto>(mapper.ConfigurationProvider)
             .ToListAsync(ct);
     }
+
+    public async Task<List<BookDto>> SearchAsync(SearchBookDto filter, CancellationToken ct)
+    {
+        IQueryable<Book> query = context.Books
+            .AsNoTracking()
+            .Include(x => x.Category)
+            .Include(x => x.Authors)
+                .ThenInclude(x => x.Author)
+            .Include(x => x.Translators)
+                .ThenInclude(x => x.Translator);
+
+        if (!string.IsNullOrWhiteSpace(filter.Title))
+        {
+            query = query.Where(x =>
+                x.Title.Contains(filter.Title));
+        }
+
+        if (!string.IsNullOrWhiteSpace(filter.AuthorFirstName))
+        {
+            query = query.Where(x =>
+                x.Authors.Any(a =>
+                    a.Author.FirstName.Contains(filter.AuthorFirstName)));
+        }
+
+        if (!string.IsNullOrWhiteSpace(filter.AuthorLastName))
+        {
+            query = query.Where(x =>
+                x.Authors.Any(a =>
+                    a.Author.LastName.Contains(filter.AuthorLastName)));
+        }
+
+        if (!string.IsNullOrWhiteSpace(filter.TranslatorFirstName))
+        {
+            query = query.Where(x =>
+                x.Translators.Any(t =>
+                    t.Translator.FirstName.Contains(filter.TranslatorFirstName)));
+        }
+
+        if (!string.IsNullOrWhiteSpace(filter.TranslatorLastName))
+        {
+            query = query.Where(x =>
+                x.Translators.Any(t =>
+                    t.Translator.LastName.Contains(filter.TranslatorLastName)));
+        }
+
+        if (filter.CategoryId.HasValue)
+        {
+            query = query.Where(x =>
+                x.CategoryId == filter.CategoryId.Value);
+        }
+
+        if (filter.MinPrice.HasValue)
+        {
+            query = query.Where(x =>
+                x.Price >= filter.MinPrice.Value);
+        }
+
+        if (filter.MaxPrice.HasValue)
+        {
+            query = query.Where(x =>
+                x.Price <= filter.MaxPrice.Value);
+        }
+
+        if (filter.MinPageCount.HasValue)
+        {
+            query = query.Where(x =>
+                x.PageCount >= filter.MinPageCount.Value);
+        }
+
+        if (filter.MaxPageCount.HasValue)
+        {
+            query = query.Where(x =>
+                x.PageCount <= filter.MaxPageCount.Value);
+        }
+
+        return await query
+            .Select(x => mapper.Map<BookDto>(x))
+            .ToListAsync(ct);
+    }
 }

@@ -30,4 +30,9 @@ public class BookService(IBookRepository bookRepo) : IBookService
     {
         return await bookRepo.GetAllAsync(ct);
     }
+
+    public async Task<List<BookDto>> SearchAsync(SearchBookDto filter, CancellationToken ct)
+    {
+        return await bookRepo.SearchAsync(filter, ct);
+    }
 }

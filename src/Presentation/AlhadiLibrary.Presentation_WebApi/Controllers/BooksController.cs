@@ -3,6 +3,7 @@ using AlhadiLibrary.Domain.AppService.Books.Commands.Delete;
 using AlhadiLibrary.Domain.AppService.Books.Commands.Update;
 using AlhadiLibrary.Domain.AppService.Books.Queries.GetAll;
 using AlhadiLibrary.Domain.AppService.Books.Queries.GetById;
+using AlhadiLibrary.Domain.AppService.Books.Queries.Search;
 using AlhadiLibrary.Domain.Core.BookAgg.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -54,6 +55,16 @@ namespace AlhadiLibrary.Presentation_WebApi.Controllers
         {
             var query = new GetAllBooksQuery();
             var result = await mediator.Send(query, ct);
+            return Ok(result);
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> Search(
+            [FromQuery] SearchBookDto filter)
+        {
+            var result = await mediator.Send(
+                new SearchBooksQuery { Filter = filter });
+
             return Ok(result);
         }
     }

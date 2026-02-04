@@ -23,5 +23,4 @@ public class ApplicationUser : IdentityUser<int>
 
     public UserRoleEnum Role { get;  set; }
     public ICollection<Comment> Comments { get;  set; } = new List<Comment>();
-
 }
